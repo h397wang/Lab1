@@ -5,8 +5,8 @@ use ieee.numeric_std.ALL;
 -- The above libaries lines must be included in every VHDL file, before EVERY ENTITY!
 
 --
--- This is the main circuit Entity, which connects all wires to the FPGA pins (lights and switches)
--- First we have a PORT mapping - naming all wires going to the outside world and if they are INputs or OUTputs
+-- Main circuit Entity: connects all wires to the FPGA IO pins.
+-- PORT mapping - declare all wire connections to INput or OUTput pins.
 -- Note that all signal names here are fixed by the "DE2_pins.csv" file which you must use for every lab
 --   
 
@@ -41,10 +41,10 @@ begin
 
 -- Associate the input signals with the corresponding engine function
 
-   gas <= key(0); 
-   clutch <= key(1); 
-   brake <= key(2);
-   override <= sw(1);
+   gas <= not key(0); 
+   clutch <= not key(1); 
+   brake <= not key(2);
+   override <= not sw(1);
 
 -- The outputs of gas_control and brake_control are defined with the following boolean functions
 

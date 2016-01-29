@@ -1,5 +1,5 @@
 Simulator report for Lab1
-Thu Jan 28 20:41:18 2016
+Fri Jan 29 17:25:29 2016
 Quartus II Version 9.0 Build 184 04/29/2009 Service Pack 1 SJ Web Edition
 
 
@@ -47,7 +47,7 @@ applicable agreement for further details.
 ; Simulation End Time         ; 1.0 us       ;
 ; Simulation Netlist Size     ; 8 nodes      ;
 ; Simulation Coverage         ;     100.00 % ;
-; Total Number of Transitions ; 101          ;
+; Total Number of Transitions ; 95           ;
 ; Simulation Breakpoints      ; 0            ;
 ; Family                      ; Cyclone II   ;
 ; Device                      ; EP2C35F672C6 ;
@@ -118,8 +118,8 @@ The following table displays output ports that toggle between 1 and 0 during sim
 ; |Lab1|ledg[0]       ; |Lab1|ledg[0]       ; padio            ;
 ; |Lab1|key[2]        ; |Lab1|key[2]~corein ; combout          ;
 ; |Lab1|sw[1]         ; |Lab1|sw[1]~corein  ; combout          ;
-; |Lab1|key[0]        ; |Lab1|key[0]~corein ; combout          ;
 ; |Lab1|key[1]        ; |Lab1|key[1]~corein ; combout          ;
+; |Lab1|key[0]        ; |Lab1|key[0]~corein ; combout          ;
 +---------------------+---------------------+------------------+
 
 
@@ -152,18 +152,18 @@ The following table displays output ports that do not toggle to 0 during simulat
 Info: *******************************************************************
 Info: Running Quartus II Simulator
     Info: Version 9.0 Build 184 04/29/2009 Service Pack 1 SJ Web Edition
-    Info: Processing started: Thu Jan 28 20:41:18 2016
+    Info: Processing started: Fri Jan 29 17:25:29 2016
 Info: Command: quartus_sim --read_settings_files=on --write_settings_files=off Lab1 -c Lab1
-Info: Using vector source file "C:/Users/Wang/Documents/Henry Wang/Winter 2016/ECE 124/Lab 1/lab1-fans/Waveform1.vwf"
+Info: Using vector source file "C:/Users/Wang/Documents/Henry Wang/Winter 2016/ECE 124/Lab1/lab1-fans/Waveform1.vwf"
 Info: Option to preserve fewer signal transitions to reduce memory requirements is enabled
     Info: Simulation has been partitioned into sub-simulations according to the maximum transition count determined by the engine. Transitions from memory will be flushed out to disk at the end of each sub-simulation to reduce memory requirements.
 Info: Simulation partitioned into 1 sub-simulations
 Info: Simulation coverage is     100.00 %
-Info: Number of transitions in simulation is 101
+Info: Number of transitions in simulation is 95
 Info: Quartus II Simulator was successful. 0 errors, 0 warnings
     Info: Peak virtual memory: 168 megabytes
-    Info: Processing ended: Thu Jan 28 20:41:18 2016
-    Info: Elapsed time: 00:00:00
+    Info: Processing ended: Fri Jan 29 17:25:30 2016
+    Info: Elapsed time: 00:00:01
     Info: Total CPU time (on all processors): 00:00:00
 
 

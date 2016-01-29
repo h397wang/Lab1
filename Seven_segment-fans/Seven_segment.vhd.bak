@@ -72,9 +72,8 @@ architecture SimpleCircuit of Seven_Segment is
 
 -- Component declaration of the SevenSegment entity is neccesary 
 -- in order for it to be instantiated
+-- The ports in the component declaration have to match the entity port declaration
 
-
--- the ports in the component declaration have to match the entity port declaration
    component SevenSegment port ( 
       dataIn      :  in    std_logic_vector(3 downto 0);
       blanking    :  in    std_logic;
@@ -83,6 +82,10 @@ architecture SimpleCircuit of Seven_Segment is
    end component;
 
 begin
-   ledr <= sw; -- the LEDs will be lit by the corresponding switchs' positions 
+   ledr <= sw; -- the LEDs will be lit if the switch below it is at the position closer to it
    SS_0: SevenSegment port map(sw(3 downto 0), '0', hex0 ); -- Four bits of SW(3 downto 0) displayed on HEX0, blanking is disabled
+   
+   -- SS_0 is just a label for the instantiation of a SevenSegment component
+   -- The port map keywords mean that the logic vectors input are mapped to the corresponding vectors declared in the entity
+   
 end SimpleCircuit;

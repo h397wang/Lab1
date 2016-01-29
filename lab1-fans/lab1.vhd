@@ -33,18 +33,19 @@ architecture CarSimulator of Lab1 is
 --
 
 signal gas, clutch, brake, override: std_logic;  -- four signals for inputs
-signal gas_control, brake_control: std_logic;  -- two signals for LED outputs (one green and one red)
+signal gas_control, brake_control: std_logic;  -- two signals for LED outputs, green for gas, red for brake
 
 -- The function of CarSimulator entity is defined here
 
 begin
 
 -- Associate the input signals with the corresponding engine function
+-- The inputs are inverted to provide a conventionial user interface
 
-   gas <= key(0); 
-   clutch <= key(1); 
-   brake <= key(2);
-   override <= sw(1);
+   gas <= not key(0); 
+   clutch <= not key(1); 
+   brake <= not key(2);
+   override <= not sw(1);
 
 -- The outputs of gas_control and brake_control are defined with the following boolean functions
 

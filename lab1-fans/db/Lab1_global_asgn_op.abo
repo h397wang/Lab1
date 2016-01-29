@@ -36,10 +36,10 @@ Chip Device Options:
 	Atom Type: cycloneii_lcell_comb
 
 	INPUTS (Driven By):
-		0: NO ITERM
-		1: NO ITERM
-		2: [DATAC]	  key[2]	LIT INDEX 0	GLOBAL:DONT_CARE	DELAY_CHAIN:CONNECTED,NONE
-		3: [DATAD]	  sw[1]	LIT INDEX 0	GLOBAL:DONT_CARE	DELAY_CHAIN:UNCONNECTED
+		0: [DATAA]	  key[2]	LIT INDEX 0	GLOBAL:DONT_CARE	DELAY_CHAIN:CONNECTED,NONE
+		1: [DATAB]	  sw[1]	LIT INDEX 0	GLOBAL:DONT_CARE	DELAY_CHAIN:UNCONNECTED
+		2: NO ITERM
+		3: NO ITERM
 		4: NO ITERM
 	OUTPUTS (Int. Connections):
 		0: [COMBOUT]	gas_control~3	LIT INDEX 0 FANOUTS 1
@@ -47,7 +47,7 @@ Chip Device Options:
 
 	PARAMETER LIST:
 		sum_lutc_input                 = datac
-		lut_mask                       = 000f
+		lut_mask                       = 8888
 
 
 - ATOM ------------------------
@@ -57,10 +57,10 @@ Chip Device Options:
 	Atom Type: cycloneii_lcell_comb
 
 	INPUTS (Driven By):
-		0: [DATAA]	  key[0]	LIT INDEX 0	GLOBAL:DONT_CARE	DELAY_CHAIN:CONNECTED,NONE
-		1: [DATAB]	  key[2]	LIT INDEX 0	GLOBAL:DONT_CARE	DELAY_CHAIN:CONNECTED,NONE
-		2: [DATAC]	  sw[1]	LIT INDEX 0	GLOBAL:DONT_CARE	DELAY_CHAIN:UNCONNECTED
-		3: [DATAD]	  key[1]	LIT INDEX 0	GLOBAL:DONT_CARE	DELAY_CHAIN:CONNECTED,NONE
+		0: [DATAA]	  key[2]	LIT INDEX 0	GLOBAL:DONT_CARE	DELAY_CHAIN:CONNECTED,NONE
+		1: [DATAB]	  sw[1]	LIT INDEX 0	GLOBAL:DONT_CARE	DELAY_CHAIN:UNCONNECTED
+		2: [DATAC]	  key[1]	LIT INDEX 0	GLOBAL:DONT_CARE	DELAY_CHAIN:CONNECTED,NONE
+		3: [DATAD]	  key[0]	LIT INDEX 0	GLOBAL:DONT_CARE	DELAY_CHAIN:CONNECTED,NONE
 		4: NO ITERM
 	OUTPUTS (Int. Connections):
 		0: [COMBOUT]	gas_control~4	LIT INDEX 0 FANOUTS 1
@@ -68,7 +68,7 @@ Chip Device Options:
 
 	PARAMETER LIST:
 		sum_lutc_input                 = datac
-		lut_mask                       = 0002
+		lut_mask                       = 0080
 
 
 - ATOM ------------------------
@@ -292,7 +292,7 @@ Chip Device Options:
 	Output Duty Cycle:		BOTH_EDGES
 
 - ATOM ------------------------
-	ATOM_NAME: key[0] -- NON-UNIQUE
+	ATOM_NAME: key[1] -- NON-UNIQUE
 	Atom Hier Name: 
 	Atom Id: 15
 	Atom Type: cycloneii_io
@@ -310,11 +310,11 @@ Chip Device Options:
 		9: NO ITERM
 		10: [PADIO]	DISCONNECTED
 	OUTPUTS (Int. Connections):
-		0: [COMBOUT]	key[0]	LIT INDEX 0 FANOUTS 1
+		0: [COMBOUT]	key[1]	LIT INDEX 0 FANOUTS 1
 		1: NONE
 		2: NONE
 		3: NONE
-		4: [PADIO]	key[0]	LIT INDEX 0 FANOUTS 0
+		4: [PADIO]	key[1]	LIT INDEX 0 FANOUTS 0
 		5: NONE
 		6: NONE
 
@@ -347,7 +347,7 @@ Chip Device Options:
 	Output Duty Cycle:		BOTH_EDGES
 
 - ATOM ------------------------
-	ATOM_NAME: key[1] -- NON-UNIQUE
+	ATOM_NAME: key[0] -- NON-UNIQUE
 	Atom Hier Name: 
 	Atom Id: 16
 	Atom Type: cycloneii_io
@@ -365,11 +365,11 @@ Chip Device Options:
 		9: NO ITERM
 		10: [PADIO]	DISCONNECTED
 	OUTPUTS (Int. Connections):
-		0: [COMBOUT]	key[1]	LIT INDEX 0 FANOUTS 1
+		0: [COMBOUT]	key[0]	LIT INDEX 0 FANOUTS 1
 		1: NONE
 		2: NONE
 		3: NONE
-		4: [PADIO]	key[1]	LIT INDEX 0 FANOUTS 0
+		4: [PADIO]	key[0]	LIT INDEX 0 FANOUTS 0
 		5: NONE
 		6: NONE
 
