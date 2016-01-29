@@ -1,0 +1,90 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+--
+-- 7-segment display driver. It displays a 4-bit number on a 7-segment LED display
+-- This is created as an entity so that it can be reused many times easily
+-- Apparently entities can contain other entities as components
+-- General declaration of an entity has the OP port declarations and 
+-- the architecture which describes the behaviour of the entity (eg. outputs)
+
+
+entity SevenSegment is port (
+   
+   dataIn      :  in  std_logic_vector(3 downto 0);   -- The 4 bit data to be displayed
+   blanking    :  in  std_logic;                      -- This bit turns off all segments
+   
+   segmentsOut :  out std_logic_vector(6 downto 0)    -- 7-bit outputs to a 7-segment
+); 
+end SevenSegment;
+
+architecture Behavioral of SevenSegment is
+
+-- 
+-- The following statements convert a 4-bit input, called dataIn to a pattern of 7 bits
+-- The segment turns on when it is '0' otherwise '1'
+-- The blanking input is added to turns off the all segments
+--
+
+begin
+
+-- Assigning values to a logic vector requires that the left hand side be in double quotes
+-- Where as a variable of type std_logic requires the left hand side to be in single quotes
+
+   with blanking & dataIn select --  gfedcba        b3210      -- D7S
+      segmentsOut(6 downto 0) <=    "1000000" when "00000",    -- [0]
+                                    "1111001" when "00001",    -- [1]
+                                    "0100100" when "00010",    -- [2]      +---- a ----+
+                                    "0110000" when "00011",    -- [3]      |           |
+                                    "0011001" when "00100",    -- [4]      |           |
+                                    "0010010" when "00101",    -- [5]      f           b
+                                    "0000010" when "00110",    -- [6]      |           |
+                                    "1111000" when "00111",    -- [7]      |           |
+                                    "0000000" when "01000",    -- [8]      +---- g ----+
+                                    "0010000" when "01001",    -- [9]      |           |
+                                    "0001000" when "01010",    -- [A]      |           |
+                                    "0000011" when "01011",    -- [b]      e           c
+                                    "1000110" when "01100",    -- [c]      |           |
+                                    "0100001" when "01101",    -- [d]      |           |
+                                    "0000110" when "01110",    -- [E]      +---- d ----+
+                                    "0001110" when "01111",    -- [F]
+                                    "1111111" when others;     -- [ ]
+end architecture Behavioral;
+
+--------------------------------------------------------------------------------
+-- Main entity
+--------------------------------------------------------------------------------
+
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+entity Seven_Segment is port (
+      
+      sw               :   in  std_logic_vector(17 downto 0); -- 18 dip switches
+      ledr             :   out std_logic_vector(17 downto 0); -- 18 red LEDs
+      hex0             :   out std_logic_vector( 6 downto 0)  -- 7-segment desplays
+);
+end entity Seven_Segment;
+
+architecture SimpleCircuit of Seven_Segment is
+
+-- Component declaration of the SevenSegment entity is neccesary 
+-- in order for it to be instantiated
+
+
+-- the ports in the component declaration have to match the entity port declaration
+   component SevenSegment port ( 
+      dataIn      :  in    std_logic_vector(3 downto 0);
+      blanking    :  in    std_logic;
+      segmentsOut :  out   std_logic_vector(6 downto 0)
+   );
+   end component;
+
+begin
+   ledr <= sw; -- the LEDs will be lit by the corresponding switchs' positions 
+   SS_0: SevenSegment port map(sw(3 downto 0), '0', hex0 ); -- Four bits of SW(3 downto 0) displayed on HEX0, blanking is disabled
+   -- SS_0 is just a label for the instantiation of a SevenSegment component
+   -- 
+end SimpleCircuit;
